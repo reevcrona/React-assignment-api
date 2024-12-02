@@ -1,6 +1,35 @@
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1282px;
+    margin-top: 15px;
+    border-bottom: 4px solid #EDDECC;
+}
+ul{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 40px;
+}
 
 
-
-li  {
+li > a {
     color: white;
+    text-decoration: none;
+    font-size: 2rem;
+}
+.nav-icon{
+    color: #EDDECC;
+    width: 30px;
+    height: 30px;
+    
 }
