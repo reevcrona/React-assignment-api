@@ -8,6 +8,7 @@ function Home(){
     const navigate = useNavigate();
 
     const [mulitpleChars,setMultipleChars] = useState(null);
+    const [singleChar,setSingleChar] = useState(null);
 
     const getSpecificCharacter = () => {
         axios.get(`https://api.disneyapi.dev/character?name=${encodeURIComponent(search)}`).then((res) => {
@@ -15,21 +16,49 @@ function Home(){
 
             const results = res.data.data;
 
-            if(results){
+            if(results && results.length > 0){
                 if(results.length > 1){
+                    // Multiple characters were found
                     console.log("Mulitple was found: ", results)
                     setMultipleChars(results)
+                    
+                    setSingleChar(null) //Reset
                 }else{
-                    navigate(`/character/${results.name}`)
+                    // Only one character was found
                     console.log("One was found: ", results)
+                    setSingleChar(results)
+                    
+                    setMultipleChars(null) // Reset
                 }
                 
             }
         })
     }
     
+    const renderSingleOption = (data) => {
+        
+        return(
+            <div >
+                <h2>{data.name}</h2>
+                <img src={data.imageUrl}></img>
+                <button onClick={() => navigate(`/character/${data._id}`)}>More details</button>
+            </div>
+        )
+    }
+
     const renderOptions = (data) => {
-       return data.map((item,index) => <h2 key={index}>{item.name}</h2>)
+       
+        return data.map((item,index) => {
+        return(
+            <div key={index}>
+                <h2>{item.name}</h2>
+                <img src={item.imageUrl}></img>
+                <button onClick={() => navigate(`/character/${item._id}`)}>More details</button>
+            </div>
+        )
+        
+       })
+       
     }
 
     return (
@@ -38,6 +67,7 @@ function Home(){
             <input onChange={(e) => setSearch(e.target.value)} type="text"></input>
             <button onClick={getSpecificCharacter}>Go</button>
             {mulitpleChars ? renderOptions(mulitpleChars):""}
+            {singleChar ? renderSingleOption(singleChar): ""}
 
         </div>
     )

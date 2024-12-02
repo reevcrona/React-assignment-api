@@ -9,6 +9,7 @@ function DisneyData(){
     const [disneyData, setDisneyData] = useState([]);
     
     const {pageNumber} = useParams();
+    const {charId} = useParams();
     const navigate = useNavigate();
     
     const currentPage = pageNumber? parseInt(pageNumber):1;
@@ -31,6 +32,7 @@ function DisneyData(){
                  <h2 className="data-name">{item.name}</h2>
                  <img className="data-img" src={item.imageUrl ? item.imageUrl:PlaceHolderImage}></img>
                  <p style={{color:"white"}}>{item.films.length > 0 ? item.films:"No films"}</p>
+                 <button onClick={() => navigate(`/character/${item._id}`)}>More details</button>
              </div>
          )
         })

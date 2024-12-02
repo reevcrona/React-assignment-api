@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element = {<Home/>} />
         <Route path="/characters/page/:pageNumber" element = {<DisneyData/>}  />
-        <Route path="/character/:dataChar" element = {<CharacterCard/>} />
+        <Route path="/character/:charId" element = {<CharacterCard/>} />
       </Routes>
      </BrowserRouter>
         

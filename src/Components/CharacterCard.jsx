@@ -2,27 +2,28 @@ import { useParams } from "react-router-dom";
 import { useState,useEffect } from "react";
 import axios from "axios";
 
-
+import "../styles/CharacterCard.css";
 
 
 
 function CharacterCard(){
     
-    const {dataChar} = useParams();
+    const {charId} = useParams();
     const [CharacterData,setCharacterData] = useState(null);
     
     useEffect(() => {
-        axios.get(`https://api.disneyapi.dev/character?name=${dataChar}`).then((res) => {
+        axios.get(`https://api.disneyapi.dev/character/${charId}`).then((res) => {
             setCharacterData(res.data.data)
         })
-    },[dataChar])
+    },[charId])
 
     const renderCharacterData = () => {
         return (
             <div>
-                <h1>{CharacterData.name}</h1>
+                <h1 className="card-header">{CharacterData.name}</h1>
                 <img src={CharacterData.imageUrl}></img>
-                <p>{CharacterData._id}</p>
+                <p className="card-id">{CharacterData._id}</p>
+                <p className="card-id">{CharacterData.tvShows}</p>
             </div>
         )
     }
