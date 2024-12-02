@@ -10,14 +10,14 @@ function Navbar(){
         
         <header>
             <nav>
-                <img src={NavLogo}></img>
-                <ul>
+                <img className="nav-logo" src={NavLogo}></img>
+                <ul className="nav-links">
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/characters/page/1" >All characters</Link></li>
                     <li><Link >Contact</Link></li>
                     <li><Link >About</Link></li>
                 </ul>
-                <ul>
+                <ul className="nav-icon-link">
                     <FontAwesomeIcon className="nav-icon" icon={faSquareXTwitter} />
                     <FontAwesomeIcon className="nav-icon" icon={faSquareFacebook} />
                     <FontAwesomeIcon className="nav-icon" icon={faSquareReddit} />

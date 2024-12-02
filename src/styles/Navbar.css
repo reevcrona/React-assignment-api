@@ -11,25 +11,56 @@ nav{
     align-items: center;
     width: 100%;
     max-width: 1282px;
+    min-height: 86px;
     margin-top: 15px;
-    border-bottom: 4px solid #EDDECC;
+    position: relative;
+}
+nav::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 1320px;
+    min-height: 4px;
+    background-color: #EDDECC;
 }
 ul{
     list-style: none;
     padding: 0;
     display: flex;
     gap: 40px;
+    margin: 0;
 }
 
+.nav-links{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 40px;
+    margin: 0;
+}
+
+.nav-icon-link{
+    gap: 16px;
+}
 
 li > a {
-    color: white;
+    color: #EDDECC;
     text-decoration: none;
     font-size: 2rem;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 23px;
 }
 .nav-icon{
     color: #EDDECC;
     width: 30px;
     height: 30px;
-    
+    cursor: pointer;
+}
+.nav-logo{
+    width: 113px;
+    height: 79px;
 }
