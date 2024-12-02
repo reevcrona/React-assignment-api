@@ -3,6 +3,7 @@ import './App.css'
 import DisneyData from './Components/DisneyData.jsx';
 import Home from "./pages/Home.jsx";
 import Navbar from "./Components/Navbar.jsx";
+import CharacterCard from "./Components/CharacterCard.jsx";
 
 function App() {
   
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element = {<Home/>} />
         <Route path="/characters/page/:pageNumber" element = {<DisneyData/>}  />
+        <Route path="/character/:dataChar" element = {<CharacterCard/>} />
       </Routes>
      </BrowserRouter>
         

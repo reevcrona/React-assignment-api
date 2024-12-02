@@ -7,7 +7,7 @@ import PlaceHolderImage from "../assets/No-Image-Placeholder.svg"
 function DisneyData(){
     
     const [disneyData, setDisneyData] = useState([]);
-    const [search,setSearch] = useState("");
+    
     const {pageNumber} = useParams();
     const navigate = useNavigate();
     
@@ -21,11 +21,7 @@ function DisneyData(){
         })
     },[currentPage])
     
-    const getSpecificCharacter = () => {
-        axios.get(`https://api.disneyapi.dev/character?name=${encodeURIComponent(search)}`).then((res) => {
-            console.log(res.data)
-        })
-    }
+    
 
 
     const renderData = (data) => {
@@ -84,12 +80,11 @@ function DisneyData(){
         numContainer.push(nextPage);
         return numContainer;
     };
-    console.log(search)
+    
     return(
         <div className="disney-data-main-container">
            
-           <input onChange={(e) => setSearch(e.target.value)} type="text"></input>
-           <button onClick={getSpecificCharacter}>Go</button>
+           
             <div className="disney-data-container">
                 {disneyData.length > 0 ? renderData(disneyData) : <h1>No data</h1>}
             </div>
