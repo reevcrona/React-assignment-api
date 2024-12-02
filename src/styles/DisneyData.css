@@ -26,3 +26,15 @@
 .data-name{
     color: white;
 }
+
+.num{
+    color: white;
+    cursor: pointer;
+}
+.page-range-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 4em;
+}
