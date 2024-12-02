@@ -21,15 +21,15 @@ function DisneyData(){
         })
     },[currentPage])
     
-    
-    const renderData = (data) => {
-        return data.
-        filter((item) => {
-            return search.toLowerCase() === ""
-            ? item
-            : item.name.toLowerCase().includes(search);
+    const getSpecificCharacter = () => {
+        axios.get(`https://api.disneyapi.dev/character?name=${encodeURIComponent(search)}`).then((res) => {
+            console.log(res.data)
         })
-        .map((item,index) => {
+    }
+
+
+    const renderData = (data) => {
+        return data.map((item,index) => {
          return (
              <div key={index}>
                  <h2 className="data-name">{item.name}</h2>
@@ -41,7 +41,7 @@ function DisneyData(){
      }
 
      const apiCallPageIndex = (index) => {
-        navigate(`/page/${index}`);
+        navigate(`/characters/page/${index}`);
      }
 
 
@@ -89,6 +89,7 @@ function DisneyData(){
         <div className="disney-data-main-container">
            
            <input onChange={(e) => setSearch(e.target.value)} type="text"></input>
+           <button onClick={getSpecificCharacter}>Go</button>
             <div className="disney-data-container">
                 {disneyData.length > 0 ? renderData(disneyData) : <h1>No data</h1>}
             </div>
