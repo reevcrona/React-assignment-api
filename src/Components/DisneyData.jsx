@@ -17,7 +17,6 @@ function DisneyData(){
     useEffect(() => {
         axios.get(`https://api.disneyapi.dev/character?page=${currentPage}&pageSize=20`).then((res) => {
             window.scrollTo(0,0);
-            console.log(res.data)
             setDisneyData(res.data.data)
         })
     },[currentPage])
@@ -42,7 +41,7 @@ function DisneyData(){
 
      const renderPageRange = (start,end,container) => {
         for (let i = start; i <= end; i++) {
-            const item = <h2 className={i === currentPage ? "current-page-num" :"num"} 
+            const item = <h2 key={i} className={i === currentPage ? "current-page-num" :"num"} 
             onClick={() => apiCallPageIndex(i)}>{i}</h2>
                 
             container.push(item);
@@ -73,8 +72,8 @@ function DisneyData(){
         }
         
         
-        const prevPage = <button className="page-range-button" onClick={() => apiCallPageIndex(currentPage > 1 ? currentPage - 1:currentPage)}>Prev</button>;
-        const nextPage = <button className="page-range-button" onClick={() => apiCallPageIndex(currentPage < totalPages ? currentPage + 1:currentPage)} >Next</button>;
+        const prevPage = <button key={"prev-btn"} className="page-range-button" onClick={() => apiCallPageIndex(currentPage > 1 ? currentPage - 1:currentPage)}>Prev</button>;
+        const nextPage = <button key={"next-btn"} className="page-range-button" onClick={() => apiCallPageIndex(currentPage < totalPages ? currentPage + 1:currentPage)} >Next</button>;
         numContainer.unshift(prevPage);
         numContainer.push(nextPage);
         return numContainer;
