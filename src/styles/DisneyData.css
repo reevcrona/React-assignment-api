@@ -1,0 +1,28 @@
+
+
+.disney-data-main-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   
+}
+
+.disney-data-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.data-img{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.data-name{
+    color: white;
+}
