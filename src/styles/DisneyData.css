@@ -30,9 +30,20 @@
 .num{
     color: white;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+    line-height: 40px;
 }
 .current-page-num{
     color: red;
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+    line-height: 40px;
+}
+.num:hover,.current-page-num:hover,.page-range-button:hover{
+    background-color: teal;
 }
 .page-range-container{
     display: flex;
@@ -40,4 +51,13 @@
     justify-content: center;
     align-items: center;
     gap: 4em;
+}
+.page-range-button{
+    font-size: 1.3rem;
+    width: 70px;
+    height: 50px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
 }

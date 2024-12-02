@@ -53,68 +53,50 @@ function DisneyData(){
      }
 
 
-     
+     const renderPageRange = (start,end,container) => {
+        for (let i = start; i <= end; i++) {
+            const item = <h2 className={i === currentPage ? "current-page-num" :"num"} 
+            onClick={() => apiCallPageIndex(i)}>{i}</h2>
+                
+            container.push(item);
+        }
+
+     }
 
      const getPageRange = () => {
         const numContainer = [];
         if(currentPage > 368){
             const start = totalPages - 5;
             const end  = totalPages;
-
-            for (let i = start; i <= end; i++) {
-                const item = <h2 className={i === currentPage ? "current-page-num" :"num"} 
-                onClick={() => apiCallPageIndex(i)}>{i}</h2>
-                    
-                numContainer.push(item);
-            }
+            renderPageRange(start,end,numContainer)
+            
         }else if (currentPage === 1){
             const start = currentPage;
             const end = start + 5 ; 
-            console.log("Start:", start, "End:", end);  
-            
-            for (let i = start; i <= end; i++) {
-                const item = <h2 className={i === currentPage ? "current-page-num" :"num"} 
-                onClick={() => apiCallPageIndex(i)}>{i}</h2>
-                    
-                numContainer.push(item);
-            }
+            renderPageRange(start,end,numContainer)
         }else if (currentPage === 2){
             const start = currentPage - 1;
             const end = start + 5 ; 
-            console.log("Start:", start, "End:", end);  
-            
-            for (let i = start; i <= end; i++) {
-                const item = <h2 className={i === currentPage ? "current-page-num" :"num"} 
-                onClick={() => apiCallPageIndex(i)}>{i}</h2>
-                    
-                numContainer.push(item);
-            }
+            renderPageRange(start,end,numContainer)
         }
         else{
             const start = currentPage - 2;
             const end = start + 5 ; 
-            console.log("Start:", start, "End:", end);  
-            
-            for (let i = start; i <= end; i++) {
-                const item = <h2 className={i === currentPage ? "current-page-num" :"num"} 
-                onClick={() => apiCallPageIndex(i)}>{i}</h2>
-                    
-                numContainer.push(item);
-            }
+            renderPageRange(start,end,numContainer)
         }
         
         
-        const firstPage = <h2 className="num" onClick={() => apiCallPageIndex(1)}>First page</h2>
-        const lastPage = <h2 className="num" onClick={() => apiCallPageIndex(totalPages)}>Last page</h2>
-        numContainer.unshift(firstPage)
-        numContainer.push(lastPage)
+        const prevPage = <button className="page-range-button" onClick={() => apiCallPageIndex(currentPage -1)}>Prev</button>;
+        const nextPage = <button className="page-range-button" onClick={() => apiCallPageIndex(currentPage + 1)} >Next</button>;
+        numContainer.unshift(prevPage);
+        numContainer.push(nextPage);
         return numContainer;
     };
 
     return(
         <div className="disney-data-main-container">
-           <button onClick={() => getPage(prevPage)}>Prev page</button>
-           <button onClick={() => getPage(nextPage)} >Next page</button>
+           
+           
             <div className="disney-data-container">
                 {disneyData.length > 0 ? renderData(disneyData) : <h1>No data</h1>}
             </div>
