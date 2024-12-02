@@ -7,7 +7,7 @@ import PlaceHolderImage from "../assets/No-Image-Placeholder.svg"
 function DisneyData(){
     
     const [disneyData, setDisneyData] = useState([]);
-    
+    const [search,setSearch] = useState("");
     const {pageNumber} = useParams();
     const navigate = useNavigate();
     
@@ -23,7 +23,13 @@ function DisneyData(){
     
     
     const renderData = (data) => {
-        return data.map((item,index) => {
+        return data.
+        filter((item) => {
+            return search.toLowerCase() === ""
+            ? item
+            : item.name.toLowerCase().includes(search);
+        })
+        .map((item,index) => {
          return (
              <div key={index}>
                  <h2 className="data-name">{item.name}</h2>
@@ -78,11 +84,11 @@ function DisneyData(){
         numContainer.push(nextPage);
         return numContainer;
     };
-
+    console.log(search)
     return(
         <div className="disney-data-main-container">
            
-           
+           <input onChange={(e) => setSearch(e.target.value)} type="text"></input>
             <div className="disney-data-container">
                 {disneyData.length > 0 ? renderData(disneyData) : <h1>No data</h1>}
             </div>
