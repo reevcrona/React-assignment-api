@@ -1,36 +1,28 @@
 import {useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/DisneyData.css";
+import { useParams,useNavigate } from "react-router-dom";
 import PlaceHolderImage from "../assets/No-Image-Placeholder.svg"
 
 function DisneyData(){
     
     const [disneyData, setDisneyData] = useState([]);
-    const [nextPage,SetNextPage] = useState("");
-    const [prevPage,setPrevPage] = useState("");
-
-    const [currentPage,setCurrentPage] = useState(1);
+    
+    const {pageNumber} = useParams();
+    const navigate = useNavigate();
+    
+    const currentPage = pageNumber? parseInt(pageNumber):1;
     const totalPages = 372;
 
     useEffect(() => {
-        axios.get(`https://api.disneyapi.dev/character?pageSize=20`).then((res) => {
+        axios.get(`https://api.disneyapi.dev/character?page=${currentPage}&pageSize=20`).then((res) => {
+            window.scrollTo(0,0);
             console.log(res.data)
             setDisneyData(res.data.data)
-            SetNextPage(res.data.info.nextPage)
-            
         })
-    },[])
+    },[currentPage])
     
     
-    const getPage = (url) => {
-        if(url){
-            axios.get(url).then((res) => {
-                setDisneyData(res.data.data)
-                SetNextPage(res.data.info.nextPage)
-                setPrevPage(res.data.info.previousPage)
-            })
-        }
-    }
     const renderData = (data) => {
         return data.map((item,index) => {
          return (
@@ -44,12 +36,7 @@ function DisneyData(){
      }
 
      const apiCallPageIndex = (index) => {
-        axios.get(`https://api.disneyapi.dev/character?page=${index}&pageSize=20`).then((res) => {
-                setDisneyData(res.data.data)
-                SetNextPage(res.data.info.nextPage)
-                setPrevPage(res.data.info.previousPage)
-                setCurrentPage(index)
-        })
+        navigate(`/page/${index}`);
      }
 
 
@@ -86,8 +73,8 @@ function DisneyData(){
         }
         
         
-        const prevPage = <button className="page-range-button" onClick={() => apiCallPageIndex(currentPage -1)}>Prev</button>;
-        const nextPage = <button className="page-range-button" onClick={() => apiCallPageIndex(currentPage + 1)} >Next</button>;
+        const prevPage = <button className="page-range-button" onClick={() => apiCallPageIndex(currentPage > 1 ? currentPage - 1:currentPage)}>Prev</button>;
+        const nextPage = <button className="page-range-button" onClick={() => apiCallPageIndex(currentPage < totalPages ? currentPage + 1:currentPage)} >Next</button>;
         numContainer.unshift(prevPage);
         numContainer.push(nextPage);
         return numContainer;
