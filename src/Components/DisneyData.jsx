@@ -17,7 +17,7 @@ function DisneyData(){
             console.log(res.data)
             setDisneyData(res.data.data)
             SetNextPage(res.data.info.nextPage)
-            setTotalPages(res.data.info.totalPages)
+            
         })
     },[])
     
@@ -53,16 +53,57 @@ function DisneyData(){
      }
 
 
+     
+
      const getPageRange = () => {
-        const start = currentPage
-        const end = start + 4 ; 
-        console.log("Start:", start, "End:", end);  
         const numContainer = [];
-        for (let i = start; i <= end; i++) {
-            const item = <h2 className="num" onClick={() => apiCallPageIndex(i)}>{i}</h2>
-                
-            numContainer.push(item);
+        if(currentPage > 368){
+            const start = totalPages - 5;
+            const end  = totalPages;
+
+            for (let i = start; i <= end; i++) {
+                const item = <h2 className={i === currentPage ? "current-page-num" :"num"} 
+                onClick={() => apiCallPageIndex(i)}>{i}</h2>
+                    
+                numContainer.push(item);
+            }
+        }else if (currentPage === 1){
+            const start = currentPage;
+            const end = start + 5 ; 
+            console.log("Start:", start, "End:", end);  
+            
+            for (let i = start; i <= end; i++) {
+                const item = <h2 className={i === currentPage ? "current-page-num" :"num"} 
+                onClick={() => apiCallPageIndex(i)}>{i}</h2>
+                    
+                numContainer.push(item);
+            }
+        }else if (currentPage === 2){
+            const start = currentPage - 1;
+            const end = start + 5 ; 
+            console.log("Start:", start, "End:", end);  
+            
+            for (let i = start; i <= end; i++) {
+                const item = <h2 className={i === currentPage ? "current-page-num" :"num"} 
+                onClick={() => apiCallPageIndex(i)}>{i}</h2>
+                    
+                numContainer.push(item);
+            }
         }
+        else{
+            const start = currentPage - 2;
+            const end = start + 5 ; 
+            console.log("Start:", start, "End:", end);  
+            
+            for (let i = start; i <= end; i++) {
+                const item = <h2 className={i === currentPage ? "current-page-num" :"num"} 
+                onClick={() => apiCallPageIndex(i)}>{i}</h2>
+                    
+                numContainer.push(item);
+            }
+        }
+        
+        
         const firstPage = <h2 className="num" onClick={() => apiCallPageIndex(1)}>First page</h2>
         const lastPage = <h2 className="num" onClick={() => apiCallPageIndex(totalPages)}>Last page</h2>
         numContainer.unshift(firstPage)
