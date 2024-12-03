@@ -18,10 +18,11 @@ function Home(){
         
         if(search !== ""){
 
-        axios.get(`https://api.disneyapi.dev/character?name=${encodeURIComponent(search)}`).then((res) => {
+        axios.get(`https://api.disneyapi.dev/character?pageSize=7438&name=${search}`).then((res) => {
             
 
             const results = res.data.data;
+            console.log(res.data.data)
 
                 // think this logic works now????
                 // Check if the results length is greater than 1 if it is we found more than one character (Array)
@@ -42,6 +43,8 @@ function Home(){
                     setCharactersFound(1)
                     setMultipleChars(null) // Reset
                 }else{
+                    setSingleChar(null) //Reset
+                    setMultipleChars(null) // Reset
                     setCharactersFound("No match found please try again")
                 }
                 
