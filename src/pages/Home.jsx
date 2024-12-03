@@ -3,6 +3,8 @@ import "../styles/Home.css";
 import InputSvg from "../assets/Group 1.svg"
 import DisneyLogo from "..//assets/walt-disney-pictures.svg";
 import PlaceHolderImage from "../assets/No-Image-Placeholder.svg"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { CSSTransition } from "react-transition-group";
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -141,7 +143,9 @@ function Home(){
             classNames="top-button-appear"
             unmountOnExit
             >
-            <button className="top-button" onClick={() => window.scrollTo(0,0)}>TO THE TOP</button>
+            <button className="top-button" onClick={() => window.scrollTo(0,0)}>
+                <FontAwesomeIcon className="top-button-icon" icon={faChevronUp} />
+            </button>
             </CSSTransition> 
             : ""}
             

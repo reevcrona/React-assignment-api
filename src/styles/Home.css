@@ -44,6 +44,10 @@
     color: white;
     border: none;
     cursor: pointer;
+    transition: transform 0.2.s ease-in-out;
+}
+.search-button:hover{
+    transform: scale(1.02);
 }
 .search-button:disabled{
     cursor: not-allowed;
@@ -110,7 +114,23 @@
     position: fixed;
     bottom: 50px;
     right: 50px;
-    
+    background-color: #FF4081;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border:none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: background-color 0.3s ease, transform 0.3s ease;
+}
+.top-button:hover{
+    background-color: #FF1F64; 
+    transform: scale(1.05); 
+}
+.top-button-icon{
+    color: white;
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 .top-button-appear-enter{
     transform: translateX(150px);
@@ -127,11 +147,3 @@
     transition: transform 0.6s ease-in-out;
 }
 
-@keyframes appear{
-    0%{
-        transform: translateX(100px);
-    }
-    100%{
-        transform: translateX(0);
-    }
-}
