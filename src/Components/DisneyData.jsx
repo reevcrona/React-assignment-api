@@ -30,7 +30,7 @@ function DisneyData(){
              <div className="character-container" key={index}>
                  <img className="character-image" src={item.imageUrl ? item.imageUrl:PlaceHolderImage}></img>
                  <h2 className="character-name">{item.name}</h2>
-                 <button className="character-button" onClick={() => navigate(`/character/${item._id}`)}>More details</button>
+                 <button className="character-button" onClick={() => navigate(`/character/${item._id}`)}>Character page</button>
              </div>
          )
         })
@@ -41,36 +41,42 @@ function DisneyData(){
      }
 
 
-     const renderPageRange = (start,end,container) => {
+     const renderPageRange = (start,end,container,notCloseToEnd) => {
         for (let i = start; i <= end; i++) {
-            const item = <h2 key={i} className={i === currentPage ? "current-page-num" :"num"} 
-            onClick={() => apiCallPageIndex(i)}>{i}</h2>
+            const item = <button key={i} className={i === currentPage ? "current-page-num" :"num"} 
+            onClick={() => apiCallPageIndex(i)}>{i}</button>
                 
             container.push(item);
         }
+        if(notCloseToEnd){
+            const dots = <span className="dots">...</span>;
+            const lastPagebtn = <button className="num" onClick={() => apiCallPageIndex(totalPages)}>{totalPages}</button> 
 
+            container.push(dots)
+            container.push(lastPagebtn)
+        }
      }
 
      const getPageRange = () => {
         const numContainer = [];
         if(currentPage > 368){
-            const start = totalPages - 5;
+            const start = totalPages - 4;
             const end  = totalPages;
-            renderPageRange(start,end,numContainer)
+            renderPageRange(start,end,numContainer,false)
             
         }else if (currentPage === 1){
             const start = currentPage;
-            const end = start + 5 ; 
-            renderPageRange(start,end,numContainer)
+            const end = start + 4 ; 
+            renderPageRange(start,end,numContainer,true)
         }else if (currentPage === 2){
             const start = currentPage - 1;
-            const end = start + 5 ; 
-            renderPageRange(start,end,numContainer)
+            const end = start + 4 ; 
+            renderPageRange(start,end,numContainer,true)
         }
         else{
             const start = currentPage - 2;
-            const end = start + 5 ; 
-            renderPageRange(start,end,numContainer)
+            const end = start + 4 ; 
+            renderPageRange(start,end,numContainer,true)
         }
         
         

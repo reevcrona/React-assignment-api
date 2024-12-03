@@ -10,21 +10,22 @@
 .num{
     color: white;
     cursor: pointer;
-    width: 40px;
+    background-color: transparent;
+    width: 50px;
     height: 40px;
     border: 2px solid white;
-    line-height: 40px;
     font-family: 'Oxygen';
+    font-size: 1.2rem;
 }
 .current-page-num{
     color: white;
+    cursor: pointer;
     background-color: teal;
-    width: 40px;
+    width: 50px;
     height: 40px;
     border: 2px solid white;
-    line-height: 40px;
     font-family: 'Oxygen';
-    cursor: pointer;
+    font-size: 1.2rem;
 }
 .num:hover,.current-page-num:hover,.page-range-button:hover{
     background-color: teal;
@@ -35,7 +36,7 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    gap: 3.5em;
+    gap:1.5rem;
     margin-bottom: 1em;
 }
 .page-range-button{
@@ -51,4 +52,9 @@
     width: 90px;
     line-height: 30px;
     text-align: center;
+}
+.dots{
+    color: white;
+    font-size:2rem;
+    letter-spacing: 5px;
 }
