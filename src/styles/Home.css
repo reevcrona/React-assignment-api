@@ -90,7 +90,7 @@
     width: 100%;
     max-width: 1400px;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 40px;
     margin:50px 0;
 }
 
@@ -120,10 +120,37 @@
 }
 
 .character-button{
-    background-color: transparent;
-    width: 130px;
-    color: white;
-    padding: 5px 10px;
-    border: 3px solid white;
+    width: 140px;
+    height: 40px;
+    background: #BCD0E8;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: black;
+    border:none;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent;
     cursor: pointer;
+}
+
+.character-button:hover{
+    background-color: transparent;
+    border: 2px solid #BCD0E8;
+    color: white;
+}
+
+.character-found-text{
+    color: white;
+    font-size: 2rem;
+    font-family: 'Oxygen';
+    width: 100%;
+    max-width: 280px;
+    line-height: 1.7em;
+    margin: 0;
+    margin-top: 1.5em;
+}
+.num-of-chars-found{
+    font-size: 2.5rem;
 }

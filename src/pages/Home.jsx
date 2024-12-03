@@ -11,6 +11,7 @@ function Home(){
 
     const [mulitpleChars,setMultipleChars] = useState(null);
     const [singleChar,setSingleChar] = useState(null);
+    const [charactersFound,setCharactersFound] = useState(null);
 
     const getSpecificCharacter = () => {
         
@@ -30,21 +31,22 @@ function Home(){
                     // Multiple characters were found
                     console.log("Mulitple was found: ", results)
                     setMultipleChars(results)
-                    
                     setSingleChar(null) //Reset
+                    setCharactersFound(results.length)
                 }
                 else if (results._id){
                     // Only one character was found
                     console.log("One was found: ", results)
                     setSingleChar(results)
-                    
+                    setCharactersFound(1)
                     setMultipleChars(null) // Reset
                 }else{
-                    console.log("nothing was found")
+                    setCharactersFound("No match found please try again")
                 }
                 
             }
         )}
+        setSearch("");
     }
     
     const renderSingleOption = (data) => {
@@ -80,13 +82,15 @@ function Home(){
                 <img className="disney-logo" src={DisneyLogo}></img>
 
             </div>
-            
+               
             <div className="search-bar-container">
-                <input className="search-bar" placeholder="Search for your favorite character" onChange={(e) => setSearch(e.target.value)} type="text"></input>
+                <input required minLength="1" className="search-bar" placeholder="Search for your favorite character" value={search} onChange={(e) => setSearch(e.target.value)} type="text"></input>
                 <button className="search-button" onClick={getSpecificCharacter}>Search</button>
                 <img className="search-svg" src={InputSvg}></img>
             </div>
             
+            {charactersFound &&  <h4 className="character-found-text">{charactersFound > 0 ? <>Characters found <span className="num-of-chars-found">{charactersFound}</span> </> : charactersFound }</h4>}
+
             <div className="character-render-container">
                 {mulitpleChars ? renderOptions(mulitpleChars):""}
                 {singleChar ? renderSingleOption(singleChar): ""}
