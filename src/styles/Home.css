@@ -6,13 +6,13 @@
     align-items: center;
     flex-direction: column;
 }
-.home-header{
-    color: white;
-}
+
 .search-bar-container{
     width: 100%;
     max-width: 600px;
     position: relative;
+    margin-top: 40px;
+    
 }
 .search-bar{
     box-sizing: border-box;
@@ -53,3 +53,34 @@
 .search-bar:focus ~ .search-svg{
     display: none;
 }
+
+.header-container{
+    width: 100%;
+    max-width: 1000px;
+    min-height: 329px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    flex-direction: column;
+}
+
+.home-header{
+    color: white;
+    font-size: 3rem;
+    max-width:800px;
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: bold;
+    line-height: 75px;
+    color: #EDDECC;
+    margin: 0;
+    margin-bottom: 20px;
+
+}
+
+.disney-logo{
+    width: 250px;
+    height: 250px;
+}
+

@@ -1,6 +1,7 @@
 import axios from "axios";
 import "../styles/Home.css";
 import InputSvg from "../assets/Group 1.svg"
+import DisneyLogo from "..//assets/walt-disney-pictures.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 function Home(){
@@ -64,9 +65,14 @@ function Home(){
 
     return (
         <div className="home-main-container">
-            <h1 className="home-header">Home</h1>
+            <div className="header-container">
+                <h1 className="home-header">Your Favorite Disney Characters, All in One Place!</h1>
+                <img className="disney-logo" src={DisneyLogo}></img>
+
+            </div>
+            
             <div className="search-bar-container">
-                <input className="search-bar" onChange={(e) => setSearch(e.target.value)} type="text"></input>
+                <input className="search-bar" placeholder="Search for your favorite character" onChange={(e) => setSearch(e.target.value)} type="text"></input>
                 <button className="search-button" onClick={getSpecificCharacter}>Search</button>
                 <img className="search-svg" src={InputSvg}></img>
             </div>
