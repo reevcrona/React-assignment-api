@@ -9,7 +9,6 @@ function DisneyData(){
     const [disneyData, setDisneyData] = useState([]);
     
     const {pageNumber} = useParams();
-    const {charId} = useParams();
     const navigate = useNavigate();
     
     const currentPage = pageNumber? parseInt(pageNumber):1;
@@ -28,11 +27,10 @@ function DisneyData(){
     const renderData = (data) => {
         return data.map((item,index) => {
          return (
-             <div key={index}>
-                 <h2 className="data-name">{item.name}</h2>
-                 <img className="data-img" src={item.imageUrl ? item.imageUrl:PlaceHolderImage}></img>
-                 <p style={{color:"white"}}>{item.films.length > 0 ? item.films:"No films"}</p>
-                 <button onClick={() => navigate(`/character/${item._id}`)}>More details</button>
+             <div className="character-container" key={index}>
+                 <img className="character-image" src={item.imageUrl ? item.imageUrl:PlaceHolderImage}></img>
+                 <h2 className="character-name">{item.name}</h2>
+                 <button className="character-button" onClick={() => navigate(`/character/${item._id}`)}>More details</button>
              </div>
          )
         })
@@ -76,8 +74,8 @@ function DisneyData(){
         }
         
         
-        const prevPage = <button key={"prev-btn"} className="page-range-button" onClick={() => apiCallPageIndex(currentPage > 1 ? currentPage - 1:currentPage)}>Prev</button>;
-        const nextPage = <button key={"next-btn"} className="page-range-button" onClick={() => apiCallPageIndex(currentPage < totalPages ? currentPage + 1:currentPage)} >Next</button>;
+        const prevPage = <button key={"prev-btn"} className="page-range-button prev-btn" onClick={() => apiCallPageIndex(currentPage > 1 ? currentPage - 1:currentPage)}>Prev</button>;
+        const nextPage = <button key={"next-btn"} className="page-range-button next-btn" onClick={() => apiCallPageIndex(currentPage < totalPages ? currentPage + 1:currentPage)} >Next</button>;
         numContainer.unshift(prevPage);
         numContainer.push(nextPage);
         return numContainer;
@@ -85,9 +83,7 @@ function DisneyData(){
     
     return(
         <div className="disney-data-main-container">
-           
-           
-            <div className="disney-data-container">
+            <div className="character-render-container">
                 {disneyData.length > 0 ? renderData(disneyData) : <h1>No data</h1>}
             </div>
            <div className="page-range-container">{getPageRange()}</div>

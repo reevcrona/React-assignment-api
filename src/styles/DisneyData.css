@@ -7,26 +7,6 @@
     flex-direction: column;
    
 }
-
-.disney-data-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.data-img{
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-    object-position: center;
-}
-
-.data-name{
-    color: white;
-}
-
 .num{
     color: white;
     cursor: pointer;
@@ -34,23 +14,29 @@
     height: 40px;
     border: 2px solid white;
     line-height: 40px;
+    font-family: 'Oxygen';
 }
 .current-page-num{
-    color: red;
+    color: white;
+    background-color: teal;
     width: 40px;
     height: 40px;
     border: 2px solid white;
     line-height: 40px;
+    font-family: 'Oxygen';
+    cursor: pointer;
 }
 .num:hover,.current-page-num:hover,.page-range-button:hover{
     background-color: teal;
+    color: white;
 }
 .page-range-container{
     display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
-    gap: 4em;
+    gap: 3.5em;
+    margin-bottom: 1em;
 }
 .page-range-button{
     font-size: 1.3rem;
@@ -61,6 +47,8 @@
     border: 2px solid white;
     color: white;
 }
-h2{
-    color: white;
+.next-btn,.prev-btn{
+    width: 90px;
+    line-height: 30px;
+    text-align: center;
 }
