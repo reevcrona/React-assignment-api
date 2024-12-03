@@ -2,6 +2,7 @@ import axios from "axios";
 import "../styles/Home.css";
 import InputSvg from "../assets/Group 1.svg"
 import DisneyLogo from "..//assets/walt-disney-pictures.svg";
+import PlaceHolderImage from "../assets/No-Image-Placeholder.svg"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 function Home(){
@@ -53,7 +54,7 @@ function Home(){
         
         return(
             <div className="character-container">
-                <img className="character-image" src={data.imageUrl}></img>
+                <img className="character-image" src={data.imageUrl ? data.imageUrl: PlaceHolderImage}></img>
                 <h2 className="character-name">{data.name}</h2>
                 <button className="character-button" onClick={() => navigate(`/character/${data._id}`)}>Character page</button>
             </div>
@@ -65,7 +66,7 @@ function Home(){
         return data.map((item,index) => {
         return(
             <div className="character-container" key={index}>
-                <img className="character-image" src={item.imageUrl}></img>
+                <img className="character-image" src={item.imageUrl ? item.imageUrl : PlaceHolderImage}></img>
                 <h2 className="character-name">{item.name}</h2>
                 <button className="character-button" onClick={() => navigate(`/character/${item._id}`)}>Character page</button>
             </div>
