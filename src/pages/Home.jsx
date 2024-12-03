@@ -3,8 +3,10 @@ import "../styles/Home.css";
 import InputSvg from "../assets/Group 1.svg"
 import DisneyLogo from "..//assets/walt-disney-pictures.svg";
 import PlaceHolderImage from "../assets/No-Image-Placeholder.svg"
-import { useState } from "react";
+import { CSSTransition } from "react-transition-group";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 function Home(){
     
     const [search,setSearch] = useState("");
@@ -14,7 +16,22 @@ function Home(){
     const [singleChar,setSingleChar] = useState(null);
     const [charactersFound,setCharactersFound] = useState(null);
     const [isLoadingData,setIsLoadingData] = useState(false);
+    const [scrollPosition,setScrollPosition] = useState(0);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrollPosition(window.scrollY)
+            
+        }
+
+        window.addEventListener("scroll",handleScroll)
+
+
+        return () => {
+            window.removeEventListener("scroll",handleScroll)
+        }
+    },[])
+    
     const getSpecificCharacter = () => {
         
         if(search !== ""){
@@ -117,6 +134,17 @@ function Home(){
             </div>
             
 
+            {mulitpleChars&& mulitpleChars.length > 30 ?
+            <CSSTransition
+            in = {scrollPosition > 1000}
+            timeout={600}
+            classNames="top-button-appear"
+            unmountOnExit
+            >
+            <button className="top-button" onClick={() => window.scrollTo(0,0)}>TO THE TOP</button>
+            </CSSTransition> 
+            : ""}
+            
         </div>
     )
 }

@@ -106,3 +106,32 @@
 .num-of-chars-found{
     font-size: 2.6rem;
 }
+.top-button{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    
+}
+.top-button-appear-enter{
+    transform: translateX(150px);
+}
+.top-button-appear-enter-active{
+    transform: translateY(0);
+    transition: transform 0.6s ease-in-out;
+}
+.top-button-appear-exit{
+    transform: translateY(0);
+}
+.top-button-appear-exit-active{
+    transform: translateX(150px);
+    transition: transform 0.6s ease-in-out;
+}
+
+@keyframes appear{
+    0%{
+        transform: translateX(100px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
