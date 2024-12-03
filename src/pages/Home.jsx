@@ -13,28 +13,36 @@ function Home(){
     const [singleChar,setSingleChar] = useState(null);
 
     const getSpecificCharacter = () => {
+        
         axios.get(`https://api.disneyapi.dev/character?name=${encodeURIComponent(search)}`).then((res) => {
             
 
             const results = res.data.data;
 
-            if(results && results.length > 0){
+                // think this logic works now????
+                // Check if the results length is greater than 1 if it is we found more than one character (Array)
+                // If we cant check its length that means its an object and only found one character (Object)
+                // If not we found nothing :c
+
                 if(results.length > 1){
                     // Multiple characters were found
                     console.log("Mulitple was found: ", results)
                     setMultipleChars(results)
                     
                     setSingleChar(null) //Reset
-                }else{
+                }
+                else if (results._id){
                     // Only one character was found
                     console.log("One was found: ", results)
                     setSingleChar(results)
                     
                     setMultipleChars(null) // Reset
+                }else{
+                    console.log("nothing was found")
                 }
                 
             }
-        })
+        )
     }
     
     const renderSingleOption = (data) => {
@@ -42,7 +50,7 @@ function Home(){
         return(
             <div >
                 <h2>{data.name}</h2>
-                <img  src={data.imageUrl}></img>
+                <img src={data.imageUrl}></img>
                 <button onClick={() => navigate(`/character/${data._id}`)}>More details</button>
             </div>
         )
