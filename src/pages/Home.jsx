@@ -84,11 +84,16 @@ function Home(){
 
             </div>
                
-            <div className="search-bar-container">
+            <form 
+            className="search-bar-container"
+            onSubmit={(e) => {
+                e.preventDefault();
+                getSpecificCharacter()
+            }}>
                 <input required minLength="1" className="search-bar" placeholder="Search for your favorite character" value={search} onChange={(e) => setSearch(e.target.value)} type="text"></input>
-                <button className="search-button" onClick={getSpecificCharacter}>Search</button>
+                <button className="search-button" type="submit">Search</button>
                 <img className="search-svg" src={InputSvg}></img>
-            </div>
+            </form>
             
             {charactersFound &&  <h4 className="character-found-text">{charactersFound > 0 ? <>Characters found: <span className="num-of-chars-found">{charactersFound}</span> </> : charactersFound }</h4>}
 
