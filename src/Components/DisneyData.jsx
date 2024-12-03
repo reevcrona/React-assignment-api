@@ -90,7 +90,7 @@ function DisneyData(){
     return(
         <div className="disney-data-main-container">
             <div className="character-render-container">
-                {disneyData.length > 0 ? renderData(disneyData) : <h1>No data</h1>}
+                {disneyData.length > 0 ? renderData(disneyData) : <h1 className="loading-text">Loading Content...</h1>}
             </div>
            <div className="page-range-container">{getPageRange()}</div>
         </div>

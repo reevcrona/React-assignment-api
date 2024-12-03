@@ -90,7 +90,7 @@ function Home(){
                 <img className="search-svg" src={InputSvg}></img>
             </div>
             
-            {charactersFound &&  <h4 className="character-found-text">{charactersFound > 0 ? <>Characters found <span className="num-of-chars-found">{charactersFound}</span> </> : charactersFound }</h4>}
+            {charactersFound &&  <h4 className="character-found-text">{charactersFound > 0 ? <>Characters found: <span className="num-of-chars-found">{charactersFound}</span> </> : charactersFound }</h4>}
 
             <div className="character-render-container">
                 {mulitpleChars ? renderOptions(mulitpleChars):""}

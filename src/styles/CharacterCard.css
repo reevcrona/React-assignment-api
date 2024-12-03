@@ -1,8 +1,38 @@
 
+.character-page-container{
+    margin: 55px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
-.card-header{
+.character-page-name{
     color: white;
 }
-.card-id{
+
+.character-page-image{
+    width: 25%;
+    min-height: 150px;
+    border-radius: 15px;
+}
+
+.character-page-shows{
     color: white;
+}
+.films-header{
+    color: white;
+    font-size: 1.7rem;
+}
+.films-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 1200px;
+}
+.films-list-item{
+    color: white;
+    font-size: 1.3rem;
 }
