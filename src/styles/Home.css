@@ -44,11 +44,15 @@
     color: white;
     border: none;
     cursor: pointer;
-    
+}
+.search-button:disabled{
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 .search-button:active{
     transform: translateY(1px);
 }
+
 .search-svg{
     position: absolute;
     top: 20px;

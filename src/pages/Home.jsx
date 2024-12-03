@@ -13,12 +13,16 @@ function Home(){
     const [mulitpleChars,setMultipleChars] = useState(null);
     const [singleChar,setSingleChar] = useState(null);
     const [charactersFound,setCharactersFound] = useState(null);
+    const [isLoadingData,setIsLoadingData] = useState(false);
 
     const getSpecificCharacter = () => {
         
         if(search !== ""){
-
-        axios.get(`https://api.disneyapi.dev/character?pageSize=7438&name=${search}`).then((res) => {
+            setIsLoadingData(true)
+            
+            axios
+            .get(`https://api.disneyapi.dev/character?pageSize=7438&name=${search}`)
+            .then((res) => {
             
 
             const results = res.data.data;
@@ -48,9 +52,16 @@ function Home(){
                     setCharactersFound("No match found please try again")
                 }
                 
-            }
-        )}
-        setSearch("");
+            })
+            .catch(() => {
+                setCharactersFound("An error occurred. Please try again.");
+            })
+            .finally(() => {
+                setSearch("");
+                setIsLoadingData(false);
+            })
+        }
+        
     }
     
     const renderSingleOption = (data) => {
@@ -93,8 +104,8 @@ function Home(){
                 e.preventDefault();
                 getSpecificCharacter()
             }}>
-                <input required minLength="1" className="search-bar" placeholder="Search for your favorite character" value={search} onChange={(e) => setSearch(e.target.value)} type="text"></input>
-                <button className="search-button" type="submit">Search</button>
+                <input required minLength="1" className="search-bar" placeholder="Search for your favorite character" value={isLoadingData? "Loading...":search} onChange={(e) => setSearch(e.target.value)} type="text"></input>
+                <button className="search-button" disabled={isLoadingData} type="submit">Search</button>
                 <img className="search-svg" src={InputSvg}></img>
             </form>
             
