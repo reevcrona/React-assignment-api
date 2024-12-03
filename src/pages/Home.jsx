@@ -14,6 +14,8 @@ function Home(){
 
     const getSpecificCharacter = () => {
         
+        if(search !== ""){
+
         axios.get(`https://api.disneyapi.dev/character?name=${encodeURIComponent(search)}`).then((res) => {
             
 
@@ -42,16 +44,16 @@ function Home(){
                 }
                 
             }
-        )
+        )}
     }
     
     const renderSingleOption = (data) => {
         
         return(
-            <div >
-                <h2>{data.name}</h2>
-                <img src={data.imageUrl}></img>
-                <button onClick={() => navigate(`/character/${data._id}`)}>More details</button>
+            <div className="character-container">
+                <img className="character-image" src={data.imageUrl}></img>
+                <h2 className="character-name">{data.name}</h2>
+                <button className="character-button" onClick={() => navigate(`/character/${data._id}`)}>Character page</button>
             </div>
         )
     }
@@ -60,10 +62,10 @@ function Home(){
        
         return data.map((item,index) => {
         return(
-            <div key={index}>
-                <h2>{item.name}</h2>
-                <img src={item.imageUrl}></img>
-                <button onClick={() => navigate(`/character/${item._id}`)}>More details</button>
+            <div className="character-container" key={index}>
+                <img className="character-image" src={item.imageUrl}></img>
+                <h2 className="character-name">{item.name}</h2>
+                <button className="character-button" onClick={() => navigate(`/character/${item._id}`)}>Character page</button>
             </div>
         )
         
@@ -85,8 +87,11 @@ function Home(){
                 <img className="search-svg" src={InputSvg}></img>
             </div>
             
-            {mulitpleChars ? renderOptions(mulitpleChars):""}
-            {singleChar ? renderSingleOption(singleChar): ""}
+            <div className="character-render-container">
+                {mulitpleChars ? renderOptions(mulitpleChars):""}
+                {singleChar ? renderSingleOption(singleChar): ""}
+            </div>
+            
 
         </div>
     )
