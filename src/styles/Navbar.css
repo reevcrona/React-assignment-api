@@ -53,12 +53,30 @@ li > a {
     font-weight: 400;
     font-size: 25px;
     line-height: 23px;
+    position: relative;
+}
+li > a::before{
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: white;
+    transition: all 0.4s ease-in-out;
+}
+li > a:hover::before{
+    width: 100%;
 }
 .nav-icon{
     color: white;
     width: 30px;
     height: 30px;
     cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+.nav-icon:hover{
+    transform: scale(1.1);
 }
 .nav-logo{
     width: 113px;

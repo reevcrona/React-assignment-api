@@ -1,6 +1,6 @@
 
 .character-page-container{
-    margin: 40px 0;
+    margin: 40px 0 55px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,6 +11,7 @@
     color: white;
     font-family: 'Oxygen';
     font-size: 4.5rem;
+    margin: 25px 0;
 }
 
 .character-page-image{
@@ -26,7 +27,7 @@
     color: white;
     font-size: 2.3rem;
     font-family: 'Oxygen';
-    margin-top: 2em;
+    margin:2em 0 0.5em 0;
 }
 .character-page-container > .films-header:first-of-type{
     margin-top: 0;
