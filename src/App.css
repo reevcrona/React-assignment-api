@@ -73,6 +73,9 @@
 .character-button:hover{
     transform: scale(1.03);
 }
+.character-button:active{
+    transform: translateY(2px);
+}
 
 .loading-text{
     color: white;

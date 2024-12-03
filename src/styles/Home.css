@@ -44,6 +44,10 @@
     color: white;
     border: none;
     cursor: pointer;
+    
+}
+.search-button:active{
+    transform: translateY(1px);
 }
 .search-svg{
     position: absolute;

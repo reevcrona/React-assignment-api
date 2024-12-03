@@ -28,15 +28,15 @@ function CharacterCard(){
                 <ul className="films-list">
                     {CharacterData.films.map((item) => <li className="films-list-item">{item}</li>)}
                 </ul>
-                {CharacterData.shortFilms.length > 0 && <h4 className="films-header">Short films {CharacterData.name} has appeared in</h4>}
+                {CharacterData.shortFilms.length > 0 && <h4 className="films-header">Catch {CharacterData.name} in these short films</h4>}
                 <ul className="films-list">
                 {CharacterData.shortFilms.map((item) => <li className="films-list-item">{item}</li>)}
                 </ul>
-                {CharacterData.tvShows.length > 0 && <h4 className="films-header">Tv shows {CharacterData.name} has appeared in</h4>}
+                {CharacterData.tvShows.length > 0 && <h4 className="films-header">Explore {CharacterData.name}'s role in TV shows</h4>}
                 <ul className="films-list">
                 {CharacterData.tvShows.map((item) => <li className="films-list-item">{item}</li>)}
                 </ul>
-                {CharacterData.videoGames.length > 0 && <h4 className="films-header">Video games {CharacterData.name} has appeared in</h4>}
+                {CharacterData.videoGames.length > 0 && <h4 className="films-header">Video games featuring {CharacterData.name}</h4>}
                 <ul className="films-list">
                 {CharacterData.videoGames.map((item) => <li className="films-list-item">{item}</li>)}
                 </ul>
