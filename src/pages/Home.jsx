@@ -1,5 +1,6 @@
 import axios from "axios";
 import "../styles/Home.css";
+import InputSvg from "../assets/Group 1.svg"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 function Home(){
@@ -40,7 +41,7 @@ function Home(){
         return(
             <div >
                 <h2>{data.name}</h2>
-                <img src={data.imageUrl}></img>
+                <img  src={data.imageUrl}></img>
                 <button onClick={() => navigate(`/character/${data._id}`)}>More details</button>
             </div>
         )
@@ -62,10 +63,14 @@ function Home(){
     }
 
     return (
-        <div>
+        <div className="home-main-container">
             <h1 className="home-header">Home</h1>
-            <input onChange={(e) => setSearch(e.target.value)} type="text"></input>
-            <button onClick={getSpecificCharacter}>Go</button>
+            <div className="search-bar-container">
+                <input className="search-bar" onChange={(e) => setSearch(e.target.value)} type="text"></input>
+                <button className="search-button" onClick={getSpecificCharacter}>Search</button>
+                <img className="search-svg" src={InputSvg}></img>
+            </div>
+            
             {mulitpleChars ? renderOptions(mulitpleChars):""}
             {singleChar ? renderSingleOption(singleChar): ""}
 
