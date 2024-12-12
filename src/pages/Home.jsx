@@ -121,6 +121,7 @@ function Home(){
             <meta property="og:description" content="Discover your favorite Disney characters and explore their movie presence" />
             <meta property="og:image" content="https://your-project-name.netlify.app/disney-home-meta.jpg" />
             <meta property="og:url" content="https://wondrous-licorice-dcf421.netlify.app/" />
+            
         </Helmet>
         <div className="home-main-container">
             <div className="header-container">
