@@ -10,7 +10,7 @@ function Navbar(){
         
         <header>
             <nav>
-                <img className="nav-logo" src={NavLogo}></img>
+                <img className="nav-logo" src={NavLogo} alt="Navigation logo Seeker"></img>
                 <ul className="nav-links">
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/characters/page/1" >All characters</Link></li>

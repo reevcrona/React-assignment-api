@@ -8,6 +8,7 @@ import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { CSSTransition } from "react-transition-group";
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import {Helmet} from "react-helmet";
 
 function Home(){
     
@@ -110,10 +111,21 @@ function Home(){
     }
 
     return (
+        <>
+        <Helmet>
+            <title>Your Favorite Disney Characters, All in One Place! - Disney Character Database</title>
+            <meta name="description" content="Find your favorite Disney characters all in one place!" />
+            <meta name="keywords" content="Disney, characters, search, movies, heroes, villains" />
+            <meta name="author" content="Jacob Reevcrona"/>
+            <meta property="og:title" content="Your Favorite Disney Characters all in one place" />
+            <meta property="og:description" content="Discover your favorite Disney characters and explore their movie presence" />
+            <meta property="og:image" content="https://your-project-name.netlify.app/disney-home-meta.jpg" />
+            <meta property="og:url" content="https://wondrous-licorice-dcf421.netlify.app/" />
+        </Helmet>
         <div className="home-main-container">
             <div className="header-container">
                 <h1 className="home-header">Your Favorite Disney Characters, All in One Place!</h1>
-                <img className="disney-logo" src={DisneyLogo}></img>
+                <img className="disney-logo" src={DisneyLogo} alt="A classic Walt Disney "></img>
 
             </div>
                
@@ -125,7 +137,7 @@ function Home(){
             }}>
                 <input required minLength="1" className="search-bar" placeholder="Search for your favorite character" value={isLoadingData? "Loading...":search} onChange={(e) => setSearch(e.target.value)} type="text"></input>
                 <button className="search-button" disabled={isLoadingData} type="submit">Search</button>
-                <img className="search-svg" src={InputSvg}></img>
+                <img className="search-svg" src={InputSvg} alt="Search icon"></img>
             </form>
             
             {charactersFound &&  <h4 className="character-found-text">{charactersFound > 0 ? <>Characters found: <span className="num-of-chars-found">{charactersFound}</span> </> : charactersFound }</h4>}
@@ -150,6 +162,7 @@ function Home(){
             : ""}
             
         </div>
+        </>
     )
 }
 
