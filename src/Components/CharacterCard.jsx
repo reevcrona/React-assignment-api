@@ -29,7 +29,7 @@ function CharacterCard(){
                 <meta name="description" content={`Learn all about the movies, short films, and series that ${CharacterData.name} has appeared in.`} />
                 <meta name="author" content="Jacob Reevcrona" />
                 <meta property="og:title" content={`${CharacterData.name} - Disney Character Database`} />
-                <meta property="og:description" content={`Discover the character page for ${characterName}, including their role in Disney movies!`} />
+                <meta property="og:description" content={`Discover the character page for ${CharacterData.name}, including their role in Disney movies!`} />
                 <meta property="og:url" content={`https://wondrous-licorice-dcf421.netlify.app/character/${charId}`} />
                 <meta property="og:type" content="website" />
             </Helmet>
